@@ -2,6 +2,7 @@ angular.module('RouteControllers', [])
 	.controller('HomeController', function($scope) {
 		$scope.title = "Welcome To Angular Todo!";
 	})
+
 	.controller('RegisterController', function($scope, $location, UserAPIService, store) {
 		
 		$scope.registrationUser = {};
@@ -117,8 +118,9 @@ angular.module('RouteControllers', [])
 		var id = $routeParams.id;
 		var url = "https://morning-castle-91468.herokuapp.com/";
 
-		TodoAPIService.getTodos(URL + "todo/" + id, $scope.username, store.get('authToken')).then(function(results) }
+		TodoAPIService.getTodos(URL + "todo/" + id, $scope.username, store.get('authToken')).then(function(results) {
 			$scope.todo = results.data;
+
 		}).catch(function(err) {
 			console.log(err);
 		});
